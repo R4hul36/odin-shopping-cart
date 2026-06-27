@@ -5,6 +5,10 @@ import styles from "./App.module.css"
 
 
 function App() {
+  const [shopData, setShopData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
   return (
   
     <div className={styles[`page-container`]}>
