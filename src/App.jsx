@@ -34,9 +34,8 @@ function App() {
   return (
   
     <div className={styles[`page-container`]}>
-      <h1>App</h1>
       <Navbar />
-      <Outlet />
+      <Outlet context={{shopData, loading, error}}/>
     </div>
   )
 }
