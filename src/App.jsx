@@ -23,7 +23,6 @@ function App() {
         console.log(data)
       } catch (error) {
         setError(error.message)
-        console.log("hiiiiii")
       }finally {
         setLoading(false)
       }
