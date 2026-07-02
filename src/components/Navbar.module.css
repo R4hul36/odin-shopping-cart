@@ -1,7 +1,10 @@
 .main-nav {
     width: 20vw;
-    height: auto;
+    height: 100vh;
     background-color: rgb(241, 241, 241);
+    position: sticky;
+    top:0;
+    height: 100vh;
 }
 
 .link-container {
