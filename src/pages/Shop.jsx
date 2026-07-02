@@ -1,6 +1,7 @@
 import React from 'react'
 import { useOutletContext } from 'react-router'
 import Product from '../components/Product'
+import styles from './Shop.module.css'
 
 const Shop = () => {
   const {shopData, loading, error} = useOutletContext()
@@ -17,7 +18,7 @@ const Shop = () => {
   }
 
   return (
-    <div className='shop-container'>
+    <div className={styles['shop-container']}>
       {shopData.map(productInfo => <Product key={productInfo.id}  productInfo={productInfo}/>)}
     </div>
   )
