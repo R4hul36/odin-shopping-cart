@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Product.module.css'
 
 const Product = ({productInfo}) => { 
+
+  const [productCount, setProductCount] = useState(0)
+  console.log(productCount);
+  
   const {category, title, description, id, image, price, rating} = productInfo 
+
+  const handleCountChange = (e, btnType) => {
+     setProductCount((prevCount) => {
+      if(btnType === "inc"){
+        console.log(prevCount+1);
+        return Number(prevCount) + 1
+      }else {
+        return Number(prevCount) - 1
+      }
+      return e.target.vaue
+    })
+  }
+
   return (
     <div className={styles['product-card']}>
       <div className={styles["product-info"]}>
@@ -11,8 +28,14 @@ const Product = ({productInfo}) => {
         </div>
         <h3 title={title}>{title}</h3>
         <p>${price}</p>
+        <div className="quantity-section">
+          <button onClick={(e) =>  handleCountChange(e, "dec")}>-</button>
+          <input type="text" value={productCount} onChange={handleCountChange}/>
+          <button onClick={(e) =>  handleCountChange(e, "inc")}>+</button>
+        </div>
+
       </div>
-      <button>Add To Cart</button>
+      <button className={styles['cart-btn']}>Add To Cart</button>
     </div>
   )
 }

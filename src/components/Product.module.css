@@ -36,7 +36,7 @@ img {
    height: 100%;
 }
 
-button {
+.cart-btn {
     width: 100%;
     padding: 0.8rem;
     border: none;
