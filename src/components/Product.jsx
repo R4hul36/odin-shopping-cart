@@ -13,10 +13,10 @@ const Product = ({productInfo}) => {
       if(btnType === "inc"){
         console.log(prevCount+1);
         return Number(prevCount) + 1
-      }else {
+      }else if(btnType === "dec"){
         return Number(prevCount) - 1
       }
-      return e.target.vaue
+      return e.target.value
     })
   }
 
