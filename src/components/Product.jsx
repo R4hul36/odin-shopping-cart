@@ -9,9 +9,11 @@ const Product = ({productInfo}) => {
   const {category, title, description, id, image, price, rating} = productInfo 
 
   const handleCountChange = (e, btnType) => {
+    if(btnType === 'dec' && productCount === 0) {
+      return
+    }
      setProductCount((prevCount) => {
       if(btnType === "inc"){
-        console.log(prevCount+1);
         return Number(prevCount) + 1
       }else if(btnType === "dec"){
         return Number(prevCount) - 1
