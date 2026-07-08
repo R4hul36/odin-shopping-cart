@@ -8,6 +8,7 @@ function App() {
   const [shopData, setShopData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [cartItems, setCartItems] = useState([])
 
   useEffect(() => {
     const fetchData = async() => {
@@ -34,7 +35,7 @@ function App() {
   
     <div className={styles[`page-container`]}>
       <Navbar />
-      <Outlet context={{shopData, loading, error}}/>
+      <Outlet context={{shopData, loading, error, cartItems}}/>
     </div>
   )
 }

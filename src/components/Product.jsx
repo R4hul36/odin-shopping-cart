@@ -9,6 +9,10 @@ const Product = ({productInfo}) => {
   const {category, title, description, id, image, price, rating} = productInfo 
 
   const handleCountChange = (e, btnType) => {
+    let value = Number(e.target.value)
+    if(!Number.isInteger(value) || value < 0){
+      return
+    }
     if(btnType === 'dec' && productCount === 0) {
       return
     }
@@ -32,7 +36,7 @@ const Product = ({productInfo}) => {
         <p>${price}</p>
         <div className="quantity-section">
           <button onClick={(e) =>  handleCountChange(e, "dec")}>-</button>
-          <input type="text" value={productCount} onChange={handleCountChange}/>
+          <input type="number" min="0" value={productCount} onChange={handleCountChange}/>
           <button onClick={(e) =>  handleCountChange(e, "inc")}>+</button>
         </div>
 
