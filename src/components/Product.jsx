@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import styles from './Product.module.css'
+import { useOutletContext } from 'react-router'
 
 const Product = ({productInfo}) => { 
 
+  const {handleCart} = useOutletContext()
   const [productCount, setProductCount] = useState(0)
   console.log(productCount);
-  
   const {category, title, description, id, image, price, rating} = productInfo 
+  const product = {title, id, image, price, productCount}
+
 
   const handleCountChange = (e, btnType) => {
     let value = Number(e.target.value)
@@ -41,7 +44,7 @@ const Product = ({productInfo}) => {
         </div>
 
       </div>
-      <button className={styles['cart-btn']}>Add To Cart</button>
+      <button className={styles['cart-btn']} onClick={() => handleCart(product)}>Add To Cart</button>
     </div>
   )
 }

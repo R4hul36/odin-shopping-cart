@@ -10,6 +10,23 @@ function App() {
   const [error, setError] = useState('')
   const [cartItems, setCartItems] = useState([])
 
+  const handleCart = (product) => {
+    console.log(product);
+    
+      setCartItems((prevItems) => {
+        if(prevItems.length === 0 ) {
+           return [...prevItems, product]
+        }
+        return prevItems.map(item => {
+          console.log(item)
+          if(item.id === product.id) {
+            return {...item, productCount: item.productCount+=product.productCount}
+          } 
+        })
+       
+      })
+  }
+  console.log(cartItems)
   useEffect(() => {
     const fetchData = async() => {
       try {
@@ -35,7 +52,7 @@ function App() {
   
     <div className={styles[`page-container`]}>
       <Navbar />
-      <Outlet context={{shopData, loading, error, cartItems}}/>
+      <Outlet context={{shopData, loading, error, cartItems, handleCart}}/>
     </div>
   )
 }
