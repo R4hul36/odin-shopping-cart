@@ -6,7 +6,7 @@ const Product = ({productInfo}) => {
 
   const {handleCart} = useOutletContext()
   const [productCount, setProductCount] = useState(0)
-  console.log(productCount);
+  // console.log(productCount);
   const {category, title, description, id, image, price, rating} = productInfo 
   const product = {title, id, image, price, productCount}
 

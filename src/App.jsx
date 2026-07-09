@@ -14,16 +14,22 @@ function App() {
     console.log(product);
     
       setCartItems((prevItems) => {
-        if(prevItems.length === 0 ) {
-           return [...prevItems, product]
+        const isNewProduct = prevItems.filter(item => item.id === product.id)
+
+        if(isNewProduct.length === 0) {
+          return [...prevItems, product]
         }
+        
         return prevItems.map(item => {
-          console.log(item)
+          //console.log(item)
           if(item.id === product.id) {
-            return {...item, productCount: item.productCount+=product.productCount}
-          } 
+            let newCount = item.productCount + product.productCount
+            return {...item, productCount: newCount}
+          }
+          return item 
+         
         })
-       
+    
       })
   }
   console.log(cartItems)
@@ -38,7 +44,7 @@ function App() {
         }
         const data = await response.json()
         setShopData(data)
-        console.log(data)
+        //console.log(data)
       } catch (error) {
         setError(error.message)
       }finally {

@@ -5,7 +5,7 @@ import styles from './Shop.module.css'
 
 const Shop = () => {
   const {shopData, loading, error} = useOutletContext()
-  console.log(shopData);
+  //console.log(shopData);
   
   if(loading) {
     return <div>
