@@ -21,6 +21,7 @@ const Cart = () => {
                   <p>{item.price}</p>
                   <button>-</button>
                   <p>{item.productCount}</p>
+                  <button>+</button>
                 </div>
               </div>
             )
