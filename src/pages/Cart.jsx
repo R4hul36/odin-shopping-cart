@@ -5,12 +5,30 @@ import { useOutletContext } from 'react-router'
 const Cart = () => {
   const {cartItems} = useOutletContext()
   if(cartItems.length === 0) {
-    console.log("cart is empty")
-  }else {
-    console.log(cartItems)
+    return <h2>Your Cart is Empty</h2>
   }
   return (
-    <div><h1>Cart</h1></div>
+    <div>
+      <h2>Shopping Cart</h2>
+      <ul>
+        <li>
+          {cartItems.map(item => {
+            return (
+              <div key={item.id}>
+                <img src={item.image} alt="" />
+                <div>
+                  <h2>{item.title}</h2>
+                  <p>{item.price}</p>
+                  <button>-</button>
+                  <p>{item.productCount}</p>
+                </div>
+              </div>
+            )
+          })}
+        </li>
+      </ul>
+      
+    </div>
   )
 }
 

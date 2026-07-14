@@ -32,7 +32,7 @@ function App() {
     
       })
   }
-  console.log(cartItems)
+  // console.log(cartItems)
   useEffect(() => {
     const fetchData = async() => {
       try {
