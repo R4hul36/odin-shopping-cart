@@ -42,11 +42,29 @@ function App() {
 
   const handleIncrement = (id) => {
     console.log("increment")
+    setCartItems((prevItems) => {
+      return prevItems.map(item => {
+        if(item.id === id) {
+          const count = item.productCount+1
+          return {...item, productCount: count}
+        }
+      })
+    })
   }
 
   const handleDecrement = (id) => {
     console.log("decrement");
-    
+    setCartItems((prevItems) => {
+      return prevItems.map(item => {
+        if(item.id === id) {
+          const count = item.productCount
+          if(count<=1){
+            return item
+          }
+          return {...item, productCount: count-1}
+        }
+      })
+    })
   }
 
   // console.log(cartItems)
