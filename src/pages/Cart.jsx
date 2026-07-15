@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router'
 
 
 const Cart = () => {
-  const {cartItems} = useOutletContext()
+  const {cartItems, handleRemove, handleIncrement, handleDecrement} = useOutletContext()
   if(cartItems.length === 0) {
     return <h2>Your Cart is Empty</h2>
   }
@@ -15,13 +15,14 @@ const Cart = () => {
           {cartItems.map(item => {
             return (
               <div key={item.id}>
-                <img src={item.image} alt="" />
+                {/* <img src={item.image} alt="" /> */}
                 <div>
                   <h2>{item.title}</h2>
                   <p>{item.price}</p>
-                  <button>-</button>
+                  <button onClick={() => handleDecrement(item.id)}>-</button>
                   <p>{item.productCount}</p>
-                  <button>+</button>
+                  <button onClick={() => handleIncrement(item.id)}>+</button>
+                  <button onClick={() => handleRemove(item.id)}>Delete</button>
                 </div>
               </div>
             )

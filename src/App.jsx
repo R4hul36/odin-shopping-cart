@@ -32,6 +32,23 @@ function App() {
     
       })
   }
+
+  const handleRemove = (id) => {
+    console.log("product" + id + "removed");
+    setCartItems((prevItems) => {
+      return prevItems.filter(item => item.id !== id)
+    })
+  }
+
+  const handleIncrement = (id) => {
+    console.log("increment")
+  }
+
+  const handleDecrement = (id) => {
+    console.log("decrement");
+    
+  }
+
   // console.log(cartItems)
   useEffect(() => {
     const fetchData = async() => {
@@ -58,7 +75,7 @@ function App() {
   
     <div className={styles[`page-container`]}>
       <Navbar />
-      <Outlet context={{shopData, loading, error, cartItems, handleCart}}/>
+      <Outlet context={{shopData, loading, error, cartItems, handleCart, handleRemove, handleIncrement, handleDecrement}}/>
     </div>
   )
 }
