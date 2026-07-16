@@ -7,6 +7,15 @@ const Cart = () => {
   if(cartItems.length === 0) {
     return <h2>Your Cart is Empty</h2>
   }
+
+  const cartTotal = cartItems.reduce((total, item) => {
+    const productValue = item.price * item.productCount
+    total+=productValue
+    return total
+  }, 0 ).toFixed(2)
+  
+  console.log(cartTotal)
+  console.log(cartItems)
   return (
     <div>
       <h2>Shopping Cart</h2>
@@ -24,12 +33,13 @@ const Cart = () => {
                   <button onClick={() => handleIncrement(item.id)}>+</button>
                   <button onClick={() => handleRemove(item.id)}>Delete</button>
                 </div>
+                
               </div>
             )
           })}
         </li>
       </ul>
-      
+      <h3>Total: {cartTotal}</h3>
     </div>
   )
 }

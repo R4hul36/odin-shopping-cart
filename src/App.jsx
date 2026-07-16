@@ -48,8 +48,10 @@ function App() {
           const count = item.productCount+1
           return {...item, productCount: count}
         }
+        return item
       })
     })
+    
   }
 
   const handleDecrement = (id) => {
@@ -63,6 +65,7 @@ function App() {
           }
           return {...item, productCount: count-1}
         }
+        return item
       })
     })
   }
