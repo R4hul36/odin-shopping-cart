@@ -18,8 +18,11 @@ const Shop = () => {
   }
 
   return (
-    <div className={styles['shop-container']}>
+    <div className={styles['shop-container']} >
+      <h1>Products</h1>
+      <div className={styles['products-container']}>
       {shopData.map(productInfo => <Product key={productInfo.id}  productInfo={productInfo}/>)}
+      </div>
     </div>
   )
 }
