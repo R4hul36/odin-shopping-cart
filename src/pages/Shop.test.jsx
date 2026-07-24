@@ -30,4 +30,20 @@ describe('shop tests', () => {
         const heading = screen.getByRole('heading', {level: 1})
         expect(heading).toHaveTextContent('Products')
     })
+
+    it("check if product appears in the document", () => {
+        render(
+            <MemoryRouter initialEntries={['/shop']}>
+                <Routes>
+                    <Route element = {<Outlet context={dummyContext}/>}>
+                        <Route path="/shop" element={<Shop />}/>
+                    </Route>
+                </Routes>
+            </MemoryRouter>
+        )
+        const productTitle = screen.getByText("Test Product")
+        expect(productTitle).toBeInTheDocument()
+    })
+    
+
 })
