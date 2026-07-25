@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './Product.module.css'
 import { useOutletContext } from 'react-router'
 
-const Product = ({productInfo}) => { 
+const Product = ({productInfo}) => {  
 
   const {handleCart} = useOutletContext()
   const [productCount, setProductCount] = useState(0)
