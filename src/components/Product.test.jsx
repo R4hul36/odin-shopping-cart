@@ -12,13 +12,13 @@ const mockProduct = {
     
 }
 const mockHandleCart = vi.fn()
+const mockProductInfo = {...mockProduct, productCount: 1}
 const dummyContext = {
     handleCart: mockHandleCart
 }
 
-describe("Product tests", () => {
-    it("check if all product info is present", () => {
-        render(
+const renderProducts = () => {
+    return render(
             <MemoryRouter initialEntries={['/shop']}>
                 <Routes>
                     <Route element = {<Outlet context={dummyContext}/>}>
@@ -27,6 +27,11 @@ describe("Product tests", () => {
                 </Routes>
             </MemoryRouter>
         )
+}
+
+describe("Product tests", () => {
+    it("check if all product info is present", () => {
+        renderProducts()
         const productTitle = screen.getByText("Test Product")
         expect(productTitle).toBeInTheDocument()
 
@@ -35,20 +40,27 @@ describe("Product tests", () => {
 
     })
     it("check if handle cart is called correctly", async () => {
-        render(
-            <MemoryRouter initialEntries={['/shop']}>
-                <Routes>
-                    <Route element = {<Outlet context={dummyContext}/>}>
-                        <Route path="/shop" element={<Product productInfo = {mockProduct}/>}/>
-                    </Route>
-                </Routes>
-            </MemoryRouter>
-            
-        )
+        renderProducts()
         const addButton = screen.getByRole("button", {name: /add to cart/i})
         await userEvent.click(addButton)
         expect(addButton).toHaveBeenCalled
-        const mockProductInfo = {...mockProduct, productCount: 0}
+        
         expect(mockHandleCart).toHaveBeenCalledWith(mockProductInfo)
+    })
+
+    it("Increment count test", async () => {
+        const user = userEvent.setup()
+        renderProducts()
+        const incrementBtn = screen.getByRole('button', {name: "+"} )
+        await user.click(incrementBtn)
+        expect(screen.getByDisplayValue("2")).toBeInTheDocument()
+    })
+
+    it("Decrement count test", async () => {
+        const user = userEvent.setup()
+        renderProducts()
+        const decrementBtn = screen.getByRole('button', {name: "-"} )
+        await user.click(decrementBtn)
+        expect(screen.getByDisplayValue("1")).toBeInTheDocument()
     })
 })

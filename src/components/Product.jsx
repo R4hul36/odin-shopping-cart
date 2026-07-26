@@ -5,29 +5,30 @@ import { useOutletContext } from 'react-router'
 const Product = ({productInfo}) => {  
 
   const {handleCart} = useOutletContext()
-  const [productCount, setProductCount] = useState(0)
+  const [productCount, setProductCount] = useState(1)
   // console.log(productCount);
   const {category, title, description, id, image, price, rating} = productInfo 
   const product = {title, id, image, price, productCount}
 
 
-  const handleCountChange = (e, btnType) => {
-    let value = Number(e.target.value)
-    if(!Number.isInteger(value) || value < 0){
+  const handleCountFieldChange = (e) => {
+    if(productCount < 1) {
       return
     }
-    if(btnType === 'dec' && productCount === 0) {
-      return
-    }
-     setProductCount((prevCount) => {
-      if(btnType === "inc"){
-        return Number(prevCount) + 1
-      }else if(btnType === "dec"){
-        return Number(prevCount) - 1
-      }
-      return e.target.value
-    })
+    setProductCount(e.target.value)
   }
+
+  const handleCountIncrement = () => {
+    setProductCount(prevCount => prevCount + 1)
+  }
+
+  const handleCountDecrement = (e) => {
+    if(productCount === 1){
+      return
+    } 
+    setProductCount(prevCount => prevCount - 1)
+  }
+
 
   return (
     <div className={styles['product-card']}>
@@ -38,9 +39,9 @@ const Product = ({productInfo}) => {
         <h3 title={title}>{title}</h3>
         <p>${price}</p>
         <div className="quantity-section">
-          <button onClick={(e) =>  handleCountChange(e, "dec")}>-</button>
-          <input type="number" min="0" value={productCount} onChange={handleCountChange}/>
-          <button onClick={(e) =>  handleCountChange(e, "inc")}>+</button>
+          <button onClick={(e) =>  handleCountDecrement(e)}>-</button>
+          <input type="number" min="1" value={productCount} onChange={handleCountFieldChange}/>
+          <button onClick={(e) =>  handleCountIncrement(e)}>+</button>
         </div>
 
       </div>
