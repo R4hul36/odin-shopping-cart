@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Outlet, Route, Routes } from "react-router";
 import { describe, expect, it, vi } from "vitest";
 import Cart from "./Cart";
+import userEvent from "@testing-library/user-event";
 
 const mockCartItems = [
     {
@@ -46,4 +47,30 @@ describe("cart page tests", () => {
         const heading = screen.getByRole('heading', {level: 1})
         expect(heading).toHaveTextContent(/Your cart is empty/i)
     }) 
+
+    it("check if remove product method is called properly", async () => {
+        const user = userEvent.setup()
+        renderCart()
+        const removeBtn = screen.getByRole('button', {name: /delete/i})
+        await user.click(removeBtn)
+        expect(mockHandleRemove).toHaveBeenCalledWith(mockCartItems[0].id)
+    })
+
+    it("check if increment product method is called properly", async () => {
+        const user = userEvent.setup()
+        renderCart()
+        const incrementBtn = screen.getByRole('button', {name: "+"})
+        await user.click(incrementBtn)
+        expect(mockHandleIncrement).toHaveBeenCalledWith(mockCartItems[0].id)
+    })
+
+    it("check if decrement product method is called properly", async () => {
+        const user = userEvent.setup()
+        renderCart()
+        const decrementBtn = screen.getByRole('button', {name: "-"})
+        await user.click(decrementBtn)
+        expect(mockHandleDecrement).toHaveBeenCalledWith(mockCartItems[0].id)
+    })
+
+
 })
