@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router'
 const Cart = () => {
   const {cartItems, handleRemove, handleIncrement, handleDecrement} = useOutletContext()
   if(cartItems.length === 0) {
-    return <h2>Your Cart is Empty</h2>
+    return <h1>Your Cart is Empty</h1>
   }
 
   const cartTotal = cartItems.reduce((total, item) => {
@@ -18,7 +18,7 @@ const Cart = () => {
   console.log(cartItems)
   return (
     <div>
-      <h2>Shopping Cart</h2>
+      <h1>Shopping Cart</h1>
       <ul>
         <li>
           {cartItems.map(item => {
