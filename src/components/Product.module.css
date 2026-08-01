@@ -26,6 +26,22 @@ h3 {
     text-overflow: ellipsis;
 }
 
+.product-price {
+    font-size: 2rem;
+    position:relative;
+    margin-left: 10px;
+}
+
+.product-card span {
+    position: absolute;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    top: 5px;
+    left: -10px;
+
+    
+}
+
 .img-container {
     width: 250px;
     height: 280px;
@@ -35,11 +51,31 @@ img {
    width: 100%;
    height: 100%;
 }
-
+ 
 .cart-btn {
     width: 100%;
     padding: 0.8rem;
     border: none;
     cursor: pointer;
     background-color: orange;
+}
+
+.quantity-section {
+    display: flex;
+    gap: 3px;
+    margin: auto;
+}
+
+.quantity-section button {
+    padding: 0.3rem 0.7rem;
+    border: none;
+    background-color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.quantity-section input {
+    width: 2rem;
+    text-align: center;
+    border: none;
 }

@@ -12,21 +12,33 @@ const Product = ({productInfo}) => {
 
 
   const handleCountFieldChange = (e) => {
-    if(productCount < 1) {
+    const value = e.target.value
+    if(value === "") {
+      setProductCount(value)
       return
     }
-    setProductCount(e.target.value)
+
+    if(!/^\d+$/.test(value)){
+      return 
+    }
+
+    const num = Number(value)
+
+    if(num<1){
+      return
+    } 
+    setProductCount(value)
   }
 
   const handleCountIncrement = () => {
-    setProductCount(prevCount => prevCount + 1)
+    setProductCount(prevCount => Number(prevCount) + 1)
   }
 
   const handleCountDecrement = (e) => {
-    if(productCount === 1){
+    if(productCount <= 1){
       return
     } 
-    setProductCount(prevCount => prevCount - 1)
+    setProductCount(prevCount => Number(prevCount) - 1)
   }
 
 
@@ -37,10 +49,10 @@ const Product = ({productInfo}) => {
           <img src={image} alt={category} />
         </div>
         <h3 title={title}>{title}</h3>
-        <p>${price}</p>
-        <div className="quantity-section">
+        <p className={styles["product-price"]}><span>$</span>{price}</p>
+        <div className={styles["quantity-section"]}>
           <button onClick={(e) =>  handleCountDecrement(e)}>-</button>
-          <input type="number" min="1" value={productCount} onChange={handleCountFieldChange}/>
+          <input type="text" value={productCount} onChange={handleCountFieldChange}/>
           <button onClick={(e) =>  handleCountIncrement(e)}>+</button>
         </div>
 
