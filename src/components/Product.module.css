@@ -26,20 +26,25 @@ h3 {
     text-overflow: ellipsis;
 }
 
-.product-price {
-    font-size: 2rem;
-    position:relative;
-    margin-left: 10px;
+.row-container {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
 }
 
-.product-card span {
+.product-price {
+    font-size: 1.4rem;
+    position:relative;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.product-price span {
     position: absolute;
     font-size: 1rem;
     margin-bottom: 1rem;
-    top: 5px;
+    top: 3px;
     left: -10px;
-
-    
 }
 
 .img-container {
@@ -62,8 +67,6 @@ img {
 
 .quantity-section {
     display: flex;
-    gap: 3px;
-    margin: auto;
 }
 
 .quantity-section button {
