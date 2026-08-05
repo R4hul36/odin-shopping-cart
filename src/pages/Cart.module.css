@@ -1,0 +1,22 @@
+
+h1 {
+    text-align: left;
+    margin-left: 3rem;
+}
+
+.cart-products {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.product-container {
+    display: flex;
+    margin-left: 3rem;
+    gap: 1.5rem;
+    
+}
+
+.product-img {
+    width: 150px;
+}
