@@ -2,21 +2,66 @@
 h1 {
     text-align: left;
     margin-left: 3rem;
+    font-weight: normal;
+}
+
+h2 {
+    font-weight: lighter;
+    font-size: 1.2rem;
 }
 
 .cart-products {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .product-container {
     display: flex;
     margin-left: 3rem;
-    gap: 1.5rem;
+    gap: 1.8rem;
     
 }
 
 .product-img {
-    width: 150px;
+    width: 100px;
+    height: 100px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quantity-controls-section {
+    display: flex;
+    gap: 1rem;
+}
+
+.quantity-controls-section button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.product-price {
+    composes: product-price from '../components/Product.module.css';
+    font-size: 1.2rem;
+}
+
+.delete-btn {
+    color: red;
+}
+
+.subtotal,
+hr
+{
+    text-align: right;
+    margin-top: 1rem
+}
+
+hr {
+    width: 100%
 }

@@ -29,13 +29,17 @@ const Cart = () => {
                 <div className={styles['product-img']}>
                   <img src={item.image} alt="" />
                 </div>
-                <div>
+                <div className={styles['product-info']}>
                   <h2>{item.title}</h2>
-                  <p>$ {item.price}</p>
-                  <button onClick={() => handleDecrement(item.id)}>-</button>
-                  <p>{item.productCount}</p>
-                  <button onClick={() => handleIncrement(item.id)}>+</button>
-                  <button onClick={() => handleRemove(item.id)}>Delete</button>
+                  <p className={styles['product-price']}><span>$</span> {item.price}</p>
+                  <div className={styles["quantity-controls-section"]}>
+                    <button onClick={() => handleDecrement(item.id)}>-</button>
+                    <p>{item.productCount}</p>
+                    <button onClick={() => handleIncrement(item.id)}>+</button>
+                    <button className={styles['delete-btn']} onClick={() => handleRemove(item.id)}>Delete</button>
+                  </div>
+                  
+                  
                 </div>
                 
               </li>
@@ -43,7 +47,8 @@ const Cart = () => {
           })}
        
       </ul>
-      <h3>Total: {cartTotal}</h3>
+      <hr></hr>
+      <h3 className={styles['subtotal']}>Subtotal: $ {cartTotal}</h3>
     </div>
   )
 }
