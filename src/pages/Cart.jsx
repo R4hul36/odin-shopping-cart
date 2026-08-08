@@ -9,6 +9,9 @@ const Cart = () => {
     return <h1>Your Cart is Empty</h1>
   }
 
+  console.log(cartItems);
+  
+
   const cartTotal = cartItems.reduce((total, item) => {
     const productValue = item.price * item.productCount
     total+=productValue

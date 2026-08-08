@@ -10,6 +10,20 @@ function App() {
   const [error, setError] = useState('')
   const [cartItems, setCartItems] = useState([])
 
+  console.log(cartItems);
+  
+  const cartCount = () => {
+    if(cartItems.length === 0) {
+      return 0
+    }
+
+    const count = cartItems.reduce((total, item) => {
+      return total+=item.productCount
+    }, 0)
+
+    return count;
+  }
+
   const handleCart = (product) => {
     console.log(product);
     
@@ -95,7 +109,7 @@ function App() {
   return (
   
     <div className={styles[`page-container`]}>
-      <Navbar />
+      <Navbar cartCount={cartCount()} />
       <Outlet context={{shopData, loading, error, cartItems, handleCart, handleRemove, handleIncrement, handleDecrement}}/>
     </div>
   )
